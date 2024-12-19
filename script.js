@@ -71,28 +71,52 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = new Image();
             img.onload = () => {
                 const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
                 
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                
-                canvas.toBlob((blob) => {
-                    compressedPreview.src = URL.createObjectURL(blob);
-                    compressedSize.textContent = formatFileSize(blob.size);
+                // 根据文件类型使用不同的压缩策略
+                if (file.type === 'image/jpeg') {
+                    // JPEG使用quality参数
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    canvas.toBlob((blob) => {
+                        handleCompressedBlob(blob);
+                    }, 'image/jpeg', quality);
+                } else if (file.type === 'image/png') {
+                    // PNG通过调整尺寸来压缩
+                    // 根据quality值计算压缩比例
+                    const scale = 0.5 + (quality * 0.5); // quality从0到1,scale从0.5到1
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
                     
-                    // 设置下载按钮
-                    downloadBtn.onclick = () => {
-                        const link = document.createElement('a');
-                        link.href = URL.createObjectURL(blob);
-                        link.download = `compressed_${file.name}`;
-                        link.click();
-                    };
-                }, file.type, quality);
+                    const ctx = canvas.getContext('2d');
+                    // 设置图像平滑度
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.imageSmoothingQuality = quality < 0.5 ? 'low' : quality < 0.8 ? 'medium' : 'high';
+                    
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    canvas.toBlob((blob) => {
+                        handleCompressedBlob(blob);
+                    }, 'image/png');
+                }
             };
             img.src = e.target.result;
         };
         reader.readAsDataURL(file);
+    }
+
+    // 处理压缩后的blob
+    function handleCompressedBlob(blob) {
+        compressedPreview.src = URL.createObjectURL(blob);
+        compressedSize.textContent = formatFileSize(blob.size);
+        
+        // 设置下载按钮
+        downloadBtn.onclick = () => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `compressed_${originalFile.name}`;
+            link.click();
+        };
     }
 
     // 格式化文件大小
