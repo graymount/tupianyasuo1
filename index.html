@@ -16,16 +16,24 @@
 
         <!-- 上传区域 -->
         <div class="upload-area" id="uploadArea">
-            <input type="file" id="fileInput" accept="image/png,image/jpeg" hidden>
+            <input type="file" id="fileInput" accept="image/png,image/jpeg" multiple hidden>
             <div class="upload-box">
                 <img src="upload-icon.svg" alt="上传图标" class="upload-icon">
                 <p>点击或拖拽图片到这里</p>
-                <p class="sub-text">支持 PNG、JPG 格式</p>
+                <p class="sub-text">支持 PNG、JPG 格式，可选择多张图片</p>
             </div>
         </div>
 
         <!-- 预览和控制区域 -->
         <div class="preview-container" id="previewContainer" style="display: none;">
+            <!-- 图片导航控件 -->
+            <div class="image-navigation" id="imageNavigation" style="display: none;">
+                <button id="prevImageBtn" class="nav-btn">上一张</button>
+                <span id="imageCounter" class="image-counter">1 / 1</span>
+                <button id="nextImageBtn" class="nav-btn">下一张</button>
+            </div>
+
+            <!-- 图片预览区域 -->
             <div class="preview-box">
                 <div class="original-image">
                     <h3>原始图片</h3>
@@ -50,15 +58,39 @@
                 </div>
             </div>
 
+            <!-- 隐藏的多图片容器，用于兼容性 -->
+            <div class="multi-images-container" id="multiImagesContainer" style="display: none;"></div>
+
             <!-- 压缩控制 -->
             <div class="controls">
+                <!-- 总大小信息 -->
+                <div class="total-size-info" id="totalSizeInfo" style="display: none;">
+                    <div class="total-size-content">
+                        <div class="total-size-item">
+                            <span class="total-size-label">原始总大小：</span>
+                            <span id="totalOriginalSize">0 KB</span>
+                        </div>
+                        <div class="total-size-item">
+                            <span class="total-size-label">压缩后总大小：</span>
+                            <span id="totalCompressedSize">0 KB</span>
+                        </div>
+                        <div class="total-size-item">
+                            <span class="total-size-label">节省：</span>
+                            <span id="totalSavings">0 KB (0%)</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="quality-control">
                     <label for="qualitySlider">压缩程度：</label>
                     <input type="range" id="qualitySlider" min="0" max="100" value="80">
                     <span id="qualityValue">80%</span>
                     <span class="quality-note">（JPG: 调整压缩质量 / PNG: 调整图片尺寸）</span>
                 </div>
-                <button id="downloadBtn" class="download-btn">下载压缩后的图片</button>
+                <div class="download-buttons">
+                    <button id="downloadBtn" class="download-btn">下载当前图片</button>
+                    <button id="downloadAllBtn" class="download-all-btn" style="display: none;">下载所有图片</button>
+                </div>
             </div>
         </div>
     </div>
