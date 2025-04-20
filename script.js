@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadBtn = document.getElementById('downloadBtn');
     const multiImagesContainer = document.getElementById('multiImagesContainer');
     const downloadAllBtn = document.getElementById('downloadAllBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
     const imageNavigation = document.getElementById('imageNavigation');
     const prevImageBtn = document.getElementById('prevImageBtn');
     const nextImageBtn = document.getElementById('nextImageBtn');
@@ -389,5 +390,39 @@ document.addEventListener('DOMContentLoaded', function() {
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // 下载所有图片为zip
+    downloadAllBtn.addEventListener('click', createZipAndDownload);
+    
+    // 删除所有图片
+    clearAllBtn.addEventListener('click', clearAllImages);
+    
+    // 清除所有图片函数
+    function clearAllImages() {
+        // 重置状态
+        allImages = [];
+        compressedImages = [];
+        currentImageIndex = 0;
+        
+        // 清除预览
+        originalPreview.src = '';
+        compressedPreview.src = '';
+        originalSize.textContent = '0 KB';
+        compressedSize.textContent = '0 KB';
+        
+        // 重置文件输入框
+        fileInput.value = '';
+        
+        // 隐藏预览容器
+        previewContainer.style.display = 'none';
+        
+        // 重置多图片容器
+        multiImagesContainer.innerHTML = '';
+        
+        // 隐藏导航控件和总大小信息
+        imageNavigation.style.display = 'none';
+        totalSizeInfo.style.display = 'none';
+        downloadAllBtn.style.display = 'none';
     }
 }); 

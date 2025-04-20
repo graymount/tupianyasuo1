@@ -40,6 +40,37 @@ header h1 {
 
 header p {
     color: #86868B;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* 特点列表样式 */
+.features {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.features ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    text-align: left;
+}
+
+.features li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.features li strong {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
 }
 
 /* 上传区域样式 */
@@ -214,7 +245,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .download-btn,
-.download-all-btn {
+.download-all-btn,
+.clear-all-btn {
     flex: 1;
     padding: 1rem;
     background: var(--primary-color);
@@ -228,8 +260,18 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .download-btn:hover,
-.download-all-btn:hover {
+.download-all-btn:hover,
+.clear-all-btn:hover {
     background: #0056b3;
+}
+
+/* 为清除按钮设置特殊颜色 */
+.clear-all-btn {
+    background: #FF3B30;
+}
+
+.clear-all-btn:hover {
+    background: #E02D26;
 }
 
 .quality-note {
