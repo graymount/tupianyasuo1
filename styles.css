@@ -5,6 +5,7 @@
     --card-background: #FFFFFF;
     --text-color: #1D1D1F;
     --border-radius: 12px;
+    --domain-color: #FF6B00;
 }
 
 * {
@@ -32,16 +33,40 @@ header {
     margin-bottom: 2rem;
 }
 
+/* 网站品牌和域名样式 */
+.site-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
 header h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
+.domain-badge {
+    background-color: var(--domain-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 header p {
     color: #86868B;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+}
+
+.highlight {
+    color: var(--domain-color);
+    font-weight: 600;
 }
 
 /* 特点列表样式 */
@@ -298,4 +323,28 @@ input[type="range"]::-webkit-slider-thumb {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+/* 页脚样式 */
+.site-footer {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-top: 1px solid #E5E5E5;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.site-footer p {
+    margin: 0.5rem 0;
+    color: #86868B;
+}
+
+.site-footer strong {
+    color: var(--domain-color);
+    font-size: 1.1rem;
 } 
