@@ -1,4 +1,103 @@
+// 语言翻译数据
+const translations = {
+    zh: {
+        title: '图片压缩工具',
+        subtitle: '为中小学生、老师和家长专门研发的免费图片批量压缩工具，访问 <span class="highlight">yasuo.photos</span> 随时使用！',
+        feature1: '<strong>批量处理：</strong>一次性压缩多张图片，节省宝贵时间',
+        feature2: '<strong>简单易用：</strong>拖拽上传，一键下载，无需专业知识',
+        feature3: '<strong>完全免费：</strong>无需注册，无广告，无隐藏收费',
+        feature4: '<strong>教育助手：</strong>轻松压缩作业、教案、学习资料中的图片',
+        uploadText: '点击或拖拽图片到这里',
+        uploadSubtext: '支持 PNG、JPG 格式，可选择多张图片',
+        prevBtn: '上一张',
+        nextBtn: '下一张',
+        originalImage: '原始图片',
+        compressedImage: '压缩后',
+        fileSize: '文件大小：',
+        totalOriginalSizeLabel: '原始总大小：',
+        totalCompressedSizeLabel: '压缩后总大小：',
+        totalSavingsLabel: '节省：',
+        compressionLevel: '压缩程度：',
+        qualityNote: '（JPG: 调整压缩质量 / PNG: 调整图片尺寸）',
+        downloadCurrent: '下载当前图片',
+        downloadAll: '下载所有图片',
+        clearAll: '删除所有图片',
+        footerText1: '记住我们的网址：<strong>yasuo.photos</strong> - 随时随地为您提供免费图片压缩服务',
+        footerText2: '© 2023-2024 yasuo.photos - 让图片压缩更简单',
+        processing: '处理中...',
+        savings: '节省',
+        increase: '增加'
+    },
+    en: {
+        title: 'Image Compression Tool',
+        subtitle: 'Free batch image compression tool specially developed for students, teachers and parents. Visit <span class="highlight">yasuo.photos</span> anytime!',
+        feature1: '<strong>Batch Processing:</strong> Compress multiple images at once, saving valuable time',
+        feature2: '<strong>Easy to Use:</strong> Drag and drop upload, one-click download, no expertise required',
+        feature3: '<strong>Completely Free:</strong> No registration, no ads, no hidden fees',
+        feature4: '<strong>Education Helper:</strong> Easily compress images in homework, lesson plans, and study materials',
+        uploadText: 'Click or drag images here',
+        uploadSubtext: 'Supports PNG, JPG formats, multiple images allowed',
+        prevBtn: 'Previous',
+        nextBtn: 'Next',
+        originalImage: 'Original Image',
+        compressedImage: 'Compressed',
+        fileSize: 'File Size: ',
+        totalOriginalSizeLabel: 'Total Original Size: ',
+        totalCompressedSizeLabel: 'Total Compressed Size: ',
+        totalSavingsLabel: 'Saved: ',
+        compressionLevel: 'Compression Level: ',
+        qualityNote: '(JPG: Adjust compression quality / PNG: Adjust image dimensions)',
+        downloadCurrent: 'Download Current Image',
+        downloadAll: 'Download All Images',
+        clearAll: 'Clear All Images',
+        footerText1: 'Remember our URL: <strong>yasuo.photos</strong> - Free image compression service anytime, anywhere',
+        footerText2: '© 2023-2024 yasuo.photos - Making image compression easier',
+        processing: 'Processing...',
+        savings: 'saved',
+        increase: 'increase'
+    }
+};
+
+// 当前语言
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+// 语言切换功能
+function switchLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    
+    // 更新HTML lang属性
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    
+    // 更新页面标题
+    document.title = lang === 'zh' ? '图片压缩工具 - yasuo.photos' : 'Image Compression Tool - yasuo.photos';
+    
+    // 更新所有翻译元素
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+    
+    // 更新语言按钮
+    const langBtn = document.getElementById('langBtn');
+    langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+    langBtn.setAttribute('data-lang', lang);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化语言
+    switchLanguage(currentLanguage);
+    
+    // 语言切换按钮事件
+    const langBtn = document.getElementById('langBtn');
+    langBtn.addEventListener('click', () => {
+        const newLang = currentLanguage === 'zh' ? 'en' : 'zh';
+        switchLanguage(newLang);
+    });
+
     const uploadArea = document.getElementById('uploadArea');
     const fileInput = document.getElementById('fileInput');
     const previewContainer = document.getElementById('previewContainer');
@@ -234,17 +333,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 totalSavings.style.color = '#34C759'; // 绿色表示节省
             } else {
                 // 负的节省意味着文件变大了
-                totalSavings.textContent = `${formatFileSize(Math.abs(savedBytes))} (${Math.abs(savedPercent)}% 增加)`;
+                totalSavings.textContent = `${formatFileSize(Math.abs(savedBytes))} (${Math.abs(savedPercent)}% ${translations[currentLanguage].increase})`;
                 totalSavings.style.color = '#FF3B30'; // 红色表示增加
             }
         } else if (compressedCount > 0) {
             // 至少有一些图片已经压缩完成，显示部分结果
             totalCompressedSize.textContent = `${formatFileSize(compressedTotal)} (${compressedCount}/${allImages.length}张已处理)`;
-            totalSavings.textContent = "处理中...";
+            totalSavings.textContent = translations[currentLanguage].processing;
             totalSavings.style.color = '#86868B'; // 灰色表示处理中
         } else {
-            totalCompressedSize.textContent = "处理中...";
-            totalSavings.textContent = "处理中...";
+            totalCompressedSize.textContent = translations[currentLanguage].processing;
+            totalSavings.textContent = translations[currentLanguage].processing;
             totalSavings.style.color = '#86868B'; // 灰色表示处理中
         }
     }
@@ -310,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         } else {
             compressedPreview.src = '';
-            compressedSize.textContent = '处理中...';
+            compressedSize.textContent = translations[currentLanguage].processing;
         }
     }
 
