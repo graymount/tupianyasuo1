@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - yasuo.photos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .policy-content h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .policy-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .policy-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .policy-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-container">
+        <a href="index.html" class="back-link">← 返回首页</a>
+        
+        <h1>关于 yasuo.photos</h1>
+        
+        <div class="policy-content">
+            <p><strong>yasuo.photos</strong> 是一个专门为中国教育群体打造的免费图片压缩工具。我们致力于为学生、教师和家长提供简单、高效、安全的图片处理解决方案。</p>
+            
+            <h2>我们的使命</h2>
+            <p>在数字化教育时代，图片已成为教学和学习中不可或缺的一部分。然而，大尺寸的图片文件常常给文件传输、作业提交和资料分享带来困扰。我们的使命是通过提供免费、易用的图片压缩工具，帮助教育工作者和学生更高效地处理图片文件。</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">免费使用</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">需要注册</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">隐私保护</span>
+                </div>
+            </div>
+            
+            <h2>核心优势</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🔒 绝对安全</h3>
+                    <p>所有图片处理都在您的浏览器本地完成，不会上传到任何服务器，确保您的隐私安全。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ 快速高效</h3>
+                    <p>利用现代浏览器技术，实现毫秒级图片压缩，支持批量处理，节省宝贵时间。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 简单易用</h3>
+                    <p>直观的界面设计，拖拽即可上传，一键下载结果，无需任何技术背景。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 全平台支持</h3>
+                    <p>支持电脑、平板、手机等各种设备，随时随地处理图片。</p>
+                </div>
+            </div>
+            
+            <h2>适用场景</h2>
+            <ul>
+                <li><strong>学生作业：</strong>压缩作业中的图片，方便在线提交和分享</li>
+                <li><strong>教师备课：</strong>处理教学材料中的图片，制作轻量级课件</li>
+                <li><strong>家长辅导：</strong>帮助孩子处理学习资料中的图片文件</li>
+                <li><strong>在线考试：</strong>符合考试系统的图片大小要求</li>
+                <li><strong>学习笔记：</strong>整理和分享包含图片的学习笔记</li>
+            </ul>
+            
+            <h2>技术特点</h2>
+            <p>我们采用先进的客户端图片处理技术：</p>
+            <ul>
+                <li>HTML5 Canvas API 实现高质量图片压缩</li>
+                <li>智能压缩算法，平衡文件大小和图片质量</li>
+                <li>支持 PNG 和 JPEG 两种主流格式</li>
+                <li>批量处理功能，一次处理多张图片</li>
+                <li>实时预览，对比压缩前后效果</li>
+            </ul>
+            
+            <h2>我们的承诺</h2>
+            <p>作为教育工具提供者，我们承诺：</p>
+            <ul>
+                <li>✅ 永久免费提供基础功能</li>
+                <li>✅ 不收集用户个人信息</li>
+                <li>✅ 不在图片上添加水印</li>
+                <li>✅ 持续优化和改进服务</li>
+                <li>✅ 提供稳定可靠的服务</li>
+            </ul>
+            
+            <h2>联系我们</h2>
+            <p>我们重视每一位用户的反馈和建议。如果您有任何问题或建议，欢迎通过以下方式联系我们：</p>
+            <ul>
+                <li>网站：yasuo.photos</li>
+                <li>邮箱：contact@yasuo.photos</li>
+                <li>反馈：support@yasuo.photos</li>
+            </ul>
+            
+            <h2>未来展望</h2>
+            <p>我们将持续改进和扩展功能，计划推出：</p>
+            <ul>
+                <li>更多图片格式支持（WebP、AVIF等）</li>
+                <li>图片编辑功能（裁剪、旋转等）</li>
+                <li>批量重命名功能</li>
+                <li>图片格式转换</li>
+                <li>更多语言支持</li>
+            </ul>
+            
+            <p style="text-align: center; margin-top: 40px; font-size: 1.1em; color: var(--primary-color);">
+                <strong>感谢您选择 yasuo.photos！</strong><br>
+                让我们一起让图片处理变得更简单
+            </p>
+        </div>
+    </div>
+</body>
+</html>

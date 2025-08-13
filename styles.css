@@ -395,4 +395,26 @@ input[type="range"]::-webkit-slider-thumb {
 .site-footer strong {
     color: var(--domain-color);
     font-size: 1.1rem;
+}
+
+.footer-links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #86868B;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.footer-links .separator {
+    color: #999;
+    margin: 0 5px;
 } 

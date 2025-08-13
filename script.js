@@ -24,6 +24,9 @@ const translations = {
         clearAll: '删除所有图片',
         footerText1: '记住我们的网址：<strong>yasuo.photos</strong> - 随时随地为您提供免费图片压缩服务',
         footerText2: '© 2023-2024 yasuo.photos - 让图片压缩更简单',
+        privacyPolicy: '隐私政策',
+        termsOfService: '服务条款',
+        aboutUs: '关于我们',
         processing: '处理中...',
         savings: '节省',
         increase: '增加'
@@ -52,6 +55,9 @@ const translations = {
         clearAll: 'Clear All Images',
         footerText1: 'Remember our URL: <strong>yasuo.photos</strong> - Free image compression service anytime, anywhere',
         footerText2: '© 2023-2024 yasuo.photos - Making image compression easier',
+        privacyPolicy: 'Privacy Policy',
+        termsOfService: 'Terms of Service',
+        aboutUs: 'About Us',
         processing: 'Processing...',
         savings: 'saved',
         increase: 'increase'
